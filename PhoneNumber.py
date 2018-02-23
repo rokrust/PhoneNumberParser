@@ -44,7 +44,9 @@ class PhoneNumber(object):
             raise ValueError("No country code given")
 
     @abstractmethod
-    def parse(self, number): pass
+    def parse(self, number):
+        self.error_check(number)
+        self._number = number[4:]
 
     @abstractmethod
     def format(self): pass
@@ -67,10 +69,6 @@ class DanishPhoneNumber(PhoneNumber):
     def __init__(self):
         super(PhoneNumber, self).__init__()
         self._country_code = "+45"
-
-    def parse(self, number):
-        self.error_check(number)
-        self._number = number[4:]
 
     # Follows the format: "country code-number: 2-2-2-2"
     def format(self):
@@ -122,10 +120,6 @@ class NorwegianPhoneNumber(PhoneNumber):
     def __init__(self):
         super(PhoneNumber, self).__init__()
         self._country_code = "+47"
-
-    def parse(self, number):
-        self.error_check(number)
-        self._number = number[4:]
 
     # Follows the format: "country code-number: 3-2-3"
     def format(self):

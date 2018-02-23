@@ -24,7 +24,11 @@ output_file = open(out_file, "w")
 # With statement is exited early when using exceptions
 while True:
     raw_number = input_file.readline()
+
+    # End of input_file
     if not raw_number:
+        input_file.close()
+        output_file.close()
         break
 
     try:
@@ -37,7 +41,6 @@ while True:
         output_file.write(number + "\n")
 
         line_number += 1
-
 
     except TypeError as err:
         msg = "TypeError: " + err.message + "\t" + str(line_number) + ": " + raw_number + "\n"
