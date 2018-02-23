@@ -13,8 +13,12 @@ class PhoneNumber(object):
     # strip chars
     @staticmethod
     def normalize(number):
+        number.rstrip()                 # Remove newline character
         number.replace(" ", "")         # Remove all whitespace characters
         number.replace("\t", "")        # Remove all tabular characters
+
+        if not number:
+            raise IndexError("Number is empty")
 
         if number[0] == "+":
             number = "00" + number[1:]  # Replace '+' with '00'
@@ -55,17 +59,17 @@ class DanishPhoneNumber(PhoneNumber):
 
 
     def error_check(self, number):
-        # Length checks
-        if len(number) < 8:
-            raise IndexError("Number too short")
-        if len(number) > 8:
-            raise IndexError("Number too long")
-
         # Value checks
         if not number.isdigit():
             raise ValueError("Number contains non-numerals")
         elif not number:
             raise ValueError("Number is empty")
+
+        # Length checks
+        if len(number) < 12:
+            raise IndexError("Number too short")
+        if len(number) > 12:
+            raise IndexError("Number too long")
 
     def parse(self, number):
         self.error_check(number)
@@ -86,17 +90,17 @@ class SwedishPhoneNumber(PhoneNumber):
         self._country_code = "+46"
 
     def error_check(self, number):
-        # Length checks
-        if len(number) < 12:
-            raise IndexError("Number too short")
-        if len(number) > 16:
-            raise IndexError("Number too long")
-
         # Value checks
         if not number.isdigit():
             raise ValueError("Number contains non-numerals")
         elif not number:
             raise ValueError("Number is empty")
+
+        # Length checks
+        if len(number) < 12:
+            raise IndexError("Number too short")
+        if len(number) > 16:
+            raise IndexError("Number too long")
 
     def parse(self, number):
         self.error_check(number)
@@ -124,6 +128,19 @@ class NorwegianPhoneNumber(PhoneNumber):
     def __init__(self):
         super(PhoneNumber, self).__init__()
         self._country_code = "+47"
+
+    def error_check(self, number):
+        # Value checks
+        if not number.isdigit():
+            raise ValueError("Number contains non-numerals")
+        elif not number:
+            raise ValueError("Number is empty")
+
+        # Length checks
+        if len(number) < 12:
+            raise IndexError("Number too short")
+        if len(number) > 12:
+            raise IndexError("Number too long")
 
     def parse(self, number):
         self.error_check(number)
