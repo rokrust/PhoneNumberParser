@@ -49,15 +49,7 @@ class PhoneNumber(object):
     @abstractmethod
     def format(self): pass
 
-#    @abstractmethod
-#    def error_check(self, number): pass
-
-class DanishPhoneNumber(PhoneNumber):
-    def __init__(self):
-        super(PhoneNumber, self).__init__()
-        self._country_code = "+45"
-
-
+    @abstractmethod
     def error_check(self, number):
         # Value checks
         if not number.isdigit():
@@ -71,6 +63,11 @@ class DanishPhoneNumber(PhoneNumber):
         if len(number) > 12:
             raise IndexError("Number too long")
 
+class DanishPhoneNumber(PhoneNumber):
+    def __init__(self):
+        super(PhoneNumber, self).__init__()
+        self._country_code = "+45"
+
     def parse(self, number):
         self.error_check(number)
         self._number = number[4:]
@@ -80,8 +77,6 @@ class DanishPhoneNumber(PhoneNumber):
         # Put two digits together, seperate by space
         number_str = self._number[:2] + " " + self._number[2:4] + " " + self._number[4:6] + " " + self._number[6:8]
         return self._country_code + " " + number_str
-
-
 class SwedishPhoneNumber(PhoneNumber):
     _regional_code = ""
 
@@ -123,24 +118,10 @@ class SwedishPhoneNumber(PhoneNumber):
     def format(self):
         number_str = self._country_code + " " + self._regional_code + " " + self._number
         return number_str
-
 class NorwegianPhoneNumber(PhoneNumber):
     def __init__(self):
         super(PhoneNumber, self).__init__()
         self._country_code = "+47"
-
-    def error_check(self, number):
-        # Value checks
-        if not number.isdigit():
-            raise ValueError("Number contains non-numerals")
-        elif not number:
-            raise ValueError("Number is empty")
-
-        # Length checks
-        if len(number) < 12:
-            raise IndexError("Number too short")
-        if len(number) > 12:
-            raise IndexError("Number too long")
 
     def parse(self, number):
         self.error_check(number)
