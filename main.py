@@ -16,9 +16,9 @@ out_file = sys.argv[2]
 line_number = 0
 raw_number = ""  # Unnormalized
 
-country_number_mapping = {"45": PN.DanishPhoneNumber(),
-                          "46": PN.SwedishPhoneNumber(),
-                          "47": PN.NorwegianPhoneNumber()}
+country_number_mapping = {PN.DanishPhoneNumber.country_code: PN.DanishPhoneNumber,#getattr(PN, "DanishPhoneNumber"),
+                          PN.SwedishPhoneNumber.country_code: PN.SwedishPhoneNumber, #getattr(PN, "SwedishPhoneNumber"),
+                          PN.NorwegianPhoneNumber.country_code: PN.NorwegianPhoneNumber}#getattr(PN, "NorwegianPhoneNumber")}
 input_file = open(in_file, "r")
 output_file = open(out_file, "w")
 err_log = open("error_log.txt", "w")
@@ -47,27 +47,28 @@ while True:
         if country not in country_number_mapping.keys():
             raise ValueError("Unsupported country code")
 
-        country_number_mapping[country].parse(number)
+        # Instantiate appropriate class according to country code
+        number_instance = country_number_mapping[country](number)
 
         # No exceptions raised. Number is correct
-        number = country_number_mapping[country].format()
+        number = number_instance.get_formatted_number()
         output_file.write(number + "\n")
 
     # Phonenumber is wrong
     except TypeError as err:
-        msg = "TypeError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
+        msg = "TypeError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
         print msg
         err_log.write(msg)
         output_file.write(raw_number)
 
     except IndexError as err:
-        msg = "IndexError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
+        msg = "IndexError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
         print msg
         err_log.write(msg)
         output_file.write(raw_number)
 
     except ValueError as err:
-        msg = "ValueError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
+        msg = "ValueError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
         print msg
         err_log.write(msg)
         output_file.write(raw_number)

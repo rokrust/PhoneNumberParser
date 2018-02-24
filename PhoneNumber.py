@@ -1,15 +1,17 @@
 from abc import ABCMeta, abstractmethod
 import re
-# Sjekk at nummer bare inneholder tall
-# Sjekk at country code er med
-# Sjekk at nummer har riktig lengde
 
 class PhoneNumber(object):
-    _country_code = ""
+    country_code = ""
     _number = ""
-    _raw_number = ""
+    _formatted_number = ""
 
-    def __init__(self): pass
+    def __init__(self, number):
+        self.parse(number)
+        self.format()
+
+    def get_formatted_number(self):
+        return self._formatted_number
 
     # strip separators
     @staticmethod
@@ -53,9 +55,9 @@ class PhoneNumber(object):
     @abstractmethod
     def number_length_check(self, number): pass
 class DanishPhoneNumber(PhoneNumber):
-    def __init__(self):
-        super(PhoneNumber, self).__init__()
-        self._country_code = "+45"
+    country_code = "45"
+    def __init__(self, number):
+        super(DanishPhoneNumber, self).__init__(number)
 
     def number_length_check(self, number):
         # Value checks
@@ -69,14 +71,14 @@ class DanishPhoneNumber(PhoneNumber):
 
     # Follows the format: "country code-number: 2-2-2-2"
     def format(self):
-        number_str = self._number[:2] + " " + self._number[2:4] + " " + self._number[4:6] + " " + self._number[6:8]
-        return self._country_code + " " + number_str
+        number_str = "{} {} {} {}".format(self._number[:2], self._number[2:4], self._number[4:6], self._number[6:8])
+        self._formatted_number = "+{} {}".format(self.country_code, number_str)
 class SwedishPhoneNumber(PhoneNumber):
+    country_code = "46"
     _regional_code = ""
 
-    def __init__(self):
-        super(PhoneNumber, self).__init__()
-        self._country_code = "+46"
+    def __init__(self, number):
+        super(SwedishPhoneNumber, self).__init__(number)
 
     def number_length_check(self, number):
         # Value checks
@@ -107,12 +109,12 @@ class SwedishPhoneNumber(PhoneNumber):
 
     # Follows the format: "country code-regional code-number:"
     def format(self):
-        number_str = self._country_code + " " + self._regional_code + " " + self._number
-        return number_str
+        self._formatted_number = "+{} {} {}".format(self.country_code, self._regional_code, self._number)
 class NorwegianPhoneNumber(PhoneNumber):
-    def __init__(self):
-        super(PhoneNumber, self).__init__()
-        self._country_code = "+47"
+    country_code = "47"
+
+    def __init__(self, number):
+        super(NorwegianPhoneNumber, self).__init__(number)
 
     def number_length_check(self, number):
         # Value checks
@@ -126,6 +128,5 @@ class NorwegianPhoneNumber(PhoneNumber):
 
     # Follows the format: "country code-number: 3-2-3"
     def format(self):
-        number_str = self._number[:3] + " " + self._number[3:5] + " " + self._number[5:8]
-
-        return self._country_code + " " + number_str
+        number_str = "{} {} {}".format(self._number[:3], self._number[3:5], self._number[5:8])
+        self._formatted_number = "+{} {}".format(self.country_code, number_str)
