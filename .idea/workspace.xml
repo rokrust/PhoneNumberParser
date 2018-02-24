@@ -24,24 +24,21 @@
       <file leaf-file-name="PhoneNumber.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PhoneNumber.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="53" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="483">
+              <caret line="130" column="52" lean-forward="true" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#196#1394#0" expanded="false" />
-                <element signature="e#1107#1291#0" expanded="false" />
-                <element signature="e#1501#2405#0" expanded="false" />
-                <element signature="e#1529#1599#0" expanded="false" />
-                <element signature="e#2045#2103#0" expanded="false" />
-                <element signature="e#2192#2405#0" expanded="false" />
-                <element signature="e#2451#3822#0" expanded="false" />
-                <element signature="e#2504#2574#0" expanded="false" />
-                <element signature="e#3019#3621#0" expanded="false" />
-                <element signature="e#3716#3822#0" expanded="false" />
-                <element signature="e#3869#4692#0" expanded="false" />
-                <element signature="e#3897#3967#0" expanded="false" />
-                <element signature="e#4412#4470#0" expanded="false" />
-                <element signature="e#4557#4692#0" expanded="false" />
+                <element signature="e#1227#1293#0" expanded="false" />
+                <element signature="e#1481#1551#0" expanded="false" />
+                <element signature="e#1604#1848#0" expanded="false" />
+                <element signature="e#1931#2091#0" expanded="false" />
+                <element signature="e#1931#2091#0" expanded="false" />
+                <element signature="e#2188#2258#0" expanded="false" />
+                <element signature="e#2311#2549#0" expanded="false" />
+                <element signature="e#2588#3198#0" expanded="false" />
+                <element signature="e#3445#4056#0" expanded="false" />
+                <element signature="e#3473#3543#0" expanded="false" />
+                <element signature="e#3921#4056#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -50,8 +47,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="262">
+              <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -74,8 +71,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/PhoneNumber.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -144,7 +141,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="no_isolation_programming_task" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PhoneNumber.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="&quot;phonenumbers.txt&quot; &quot;normalizedphonenumbers.txt&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
@@ -196,13 +193,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -241,8 +238,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/PhoneNumber.py</url>
-          <line>142</line>
-          <option name="timeStamp" value="30" />
+          <line>122</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PhoneNumber.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PhoneNumber.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PhoneNumber.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PhoneNumber.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -252,31 +269,59 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PhoneNumber.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#1227#1293#0" expanded="false" />
+            <element signature="e#1481#1551#0" expanded="false" />
+            <element signature="e#1604#1848#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#2188#2258#0" expanded="false" />
+            <element signature="e#2311#2549#0" expanded="false" />
+            <element signature="e#2588#3198#0" expanded="false" />
+            <element signature="e#3445#4056#0" expanded="false" />
+            <element signature="e#3473#3543#0" expanded="false" />
+            <element signature="e#3921#4056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhoneNumber.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#196#1394#0" expanded="false" />
-            <element signature="e#1107#1291#0" expanded="false" />
-            <element signature="e#1501#2405#0" expanded="false" />
-            <element signature="e#1529#1599#0" expanded="false" />
-            <element signature="e#2045#2103#0" expanded="false" />
-            <element signature="e#2192#2405#0" expanded="false" />
-            <element signature="e#2451#3822#0" expanded="false" />
-            <element signature="e#2504#2574#0" expanded="false" />
-            <element signature="e#3019#3621#0" expanded="false" />
-            <element signature="e#3716#3822#0" expanded="false" />
-            <element signature="e#3869#4692#0" expanded="false" />
-            <element signature="e#3897#3967#0" expanded="false" />
-            <element signature="e#4412#4470#0" expanded="false" />
-            <element signature="e#4557#4692#0" expanded="false" />
+            <element signature="e#1227#1293#0" expanded="false" />
+            <element signature="e#1481#1551#0" expanded="false" />
+            <element signature="e#1604#1848#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#2188#2258#0" expanded="false" />
+            <element signature="e#2311#2549#0" expanded="false" />
+            <element signature="e#2588#3198#0" expanded="false" />
+            <element signature="e#3445#4056#0" expanded="false" />
+            <element signature="e#3473#3543#0" expanded="false" />
+            <element signature="e#3921#4056#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -295,38 +340,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PhoneNumber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="130" column="52" lean-forward="true" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="52" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#196#1394#0" expanded="false" />
-            <element signature="e#1107#1291#0" expanded="false" />
-            <element signature="e#1501#2405#0" expanded="false" />
-            <element signature="e#1529#1599#0" expanded="false" />
-            <element signature="e#2045#2103#0" expanded="false" />
-            <element signature="e#2192#2405#0" expanded="false" />
-            <element signature="e#2451#3822#0" expanded="false" />
-            <element signature="e#2504#2574#0" expanded="false" />
-            <element signature="e#3019#3621#0" expanded="false" />
-            <element signature="e#3716#3822#0" expanded="false" />
-            <element signature="e#3869#4692#0" expanded="false" />
-            <element signature="e#3897#3967#0" expanded="false" />
-            <element signature="e#4412#4470#0" expanded="false" />
-            <element signature="e#4557#4692#0" expanded="false" />
+            <element signature="e#1227#1293#0" expanded="false" />
+            <element signature="e#1481#1551#0" expanded="false" />
+            <element signature="e#1604#1848#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#1931#2091#0" expanded="false" />
+            <element signature="e#2188#2258#0" expanded="false" />
+            <element signature="e#2311#2549#0" expanded="false" />
+            <element signature="e#2588#3198#0" expanded="false" />
+            <element signature="e#3445#4056#0" expanded="false" />
+            <element signature="e#3473#3543#0" expanded="false" />
+            <element signature="e#3921#4056#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state relative-caret-position="262">
+          <caret line="45" column="51" lean-forward="true" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

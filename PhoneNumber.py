@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-import exceptions
+import re
 # Sjekk at nummer bare inneholder tall
 # Sjekk at country code er med
 # Sjekk at nummer har riktig lengde
@@ -7,32 +7,31 @@ import exceptions
 class PhoneNumber(object):
     _country_code = ""
     _number = ""
+    _raw_number = ""
 
     def __init__(self): pass
 
-    # strip chars
+    # strip separators
     @staticmethod
     def normalize(number):
-        number.rstrip()                 # Remove newline character
-        number.replace(" ", "")         # Remove all whitespace characters
-        number.replace("\t", "")        # Remove all tabular characters
+        # Strip number of all spaces
+        number = re.sub("[\s\t\n]", "", number)
 
-        if not number:
-            raise IndexError("Number is empty")
-
-        if number[0] == "+":
+        # Make number completely numeric
+        if len(number) > 0 and number[0] == "+":
             number = "00" + number[1:]  # Replace '+' with '00'
 
         # Remove all separation characters
-        i = 0
-        while i < len(number):
-            if not number[i].isalnum():
-                number = number[:i] + number[i + 1:]  # Remove character from number
-                i -= 1                                # length of string decreased
-
-            i += 1
+        number = re.sub(r'\W+', '', number)
 
         return number
+
+    @staticmethod
+    def normalized_number_error_check(number):
+        if not number:
+            raise IndexError("Number is empty")
+        elif not number.isdigit():
+            raise ValueError("Number contains letters")
 
     @staticmethod
     def identify_country(number):
@@ -45,19 +44,22 @@ class PhoneNumber(object):
 
     @abstractmethod
     def parse(self, number):
-        self.error_check(number)
+        self.number_length_check(number)
         self._number = number[4:]
 
     @abstractmethod
     def format(self): pass
 
     @abstractmethod
-    def error_check(self, number):
+    def number_length_check(self, number): pass
+class DanishPhoneNumber(PhoneNumber):
+    def __init__(self):
+        super(PhoneNumber, self).__init__()
+        self._country_code = "+45"
+
+    def number_length_check(self, number):
         # Value checks
-        if not number.isdigit():
-            raise ValueError("Number contains non-numerals")
-        elif not number:
-            raise ValueError("Number is empty")
+        super(PhoneNumber, self).__init__()
 
         # Length checks
         if len(number) < 12:
@@ -65,14 +67,8 @@ class PhoneNumber(object):
         if len(number) > 12:
             raise IndexError("Number too long")
 
-class DanishPhoneNumber(PhoneNumber):
-    def __init__(self):
-        super(PhoneNumber, self).__init__()
-        self._country_code = "+45"
-
     # Follows the format: "country code-number: 2-2-2-2"
     def format(self):
-        # Put two digits together, seperate by space
         number_str = self._number[:2] + " " + self._number[2:4] + " " + self._number[4:6] + " " + self._number[6:8]
         return self._country_code + " " + number_str
 class SwedishPhoneNumber(PhoneNumber):
@@ -82,12 +78,9 @@ class SwedishPhoneNumber(PhoneNumber):
         super(PhoneNumber, self).__init__()
         self._country_code = "+46"
 
-    def error_check(self, number):
+    def number_length_check(self, number):
         # Value checks
-        if not number.isdigit():
-            raise ValueError("Number contains non-numerals")
-        elif not number:
-            raise ValueError("Number is empty")
+        super(PhoneNumber, self).__init__()
 
         # Length checks
         if len(number) < 12:
@@ -96,7 +89,7 @@ class SwedishPhoneNumber(PhoneNumber):
             raise IndexError("Number too long")
 
     def parse(self, number):
-        self.error_check(number)
+        self.number_length_check(number)
 
         self._number = number[-8:]          # Last eight digits
         self._regional_code = number[4:-8]  # Digits between the country code and the eight last
@@ -120,6 +113,16 @@ class NorwegianPhoneNumber(PhoneNumber):
     def __init__(self):
         super(PhoneNumber, self).__init__()
         self._country_code = "+47"
+
+    def number_length_check(self, number):
+        # Value checks
+        super(PhoneNumber, self).__init__()
+
+        # Length checks
+        if len(number) < 12:
+            raise IndexError("Number too short")
+        if len(number) > 12:
+            raise IndexError("Number too long")
 
     # Follows the format: "country code-number: 3-2-3"
     def format(self):

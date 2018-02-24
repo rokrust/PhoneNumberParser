@@ -1,0 +1,5 @@
+ValueError: Unsupported country code	0: ++
+ValueError: Unsupported country code	8: +48 123456789
+ValueError: Number contains letters	9: abc
+IndexError: Number is empty	10: 	
+ValueError: No country code given	11: 12345678

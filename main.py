@@ -8,6 +8,7 @@ try:
         raise TypeError("Too many input arguments")
 except TypeError as err:
     print err
+    exit(1)
 
 in_file = sys.argv[1]
 out_file = sys.argv[2]
@@ -15,11 +16,12 @@ out_file = sys.argv[2]
 line_number = 0
 raw_number = ""  # Unnormalized
 
-phone_number = {"45": PN.DanishPhoneNumber(),
-                "46": PN.SwedishPhoneNumber(),
-                "47": PN.NorwegianPhoneNumber()}
+country_number_mapping = {"45": PN.DanishPhoneNumber(),
+                          "46": PN.SwedishPhoneNumber(),
+                          "47": PN.NorwegianPhoneNumber()}
 input_file = open(in_file, "r")
 output_file = open(out_file, "w")
+err_log = open("error_log.txt", "w")
 
 # With statement is exited early when using exceptions
 while True:
@@ -32,27 +34,42 @@ while True:
         break
 
     try:
+        # Strip phonenumber of spaces and non-alphanumeric separation characters
         number = PN.PhoneNumber.normalize(raw_number)
+
+        #check that phonenumber is a numeral and non-empty
+        PN.PhoneNumber.normalized_number_error_check(number)
+
+        # Find country code
         country = PN.PhoneNumber.identify_country(number)
-        phone_number[country].parse(number)  # Accepts normalized numbers only
+
+        # Confirm that the number type is supported
+        if country not in country_number_mapping.keys():
+            raise ValueError("Unsupported country code")
+
+        country_number_mapping[country].parse(number)
 
         # No exceptions raised. Number is correct
-        number = phone_number[country].format()
+        number = country_number_mapping[country].format()
         output_file.write(number + "\n")
 
-        line_number += 1
-
+    # Phonenumber is wrong
     except TypeError as err:
-        msg = "TypeError: " + err.message + "\t" + str(line_number) + ": " + raw_number + "\n"
+        msg = "TypeError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
         print msg
-#        err_log.write(msg)
+        err_log.write(msg)
         output_file.write(raw_number)
+
     except IndexError as err:
-        msg = "IndexError: " + err.message + "\t" + str(line_number) + ": " + raw_number + "\n"
+        msg = "IndexError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
         print msg
-#        err_log.write(msg)
-    except ValueError as err:
-        msg = "ValueError: " + err.message + "\t" + str(line_number) + ": " + raw_number + "\n"
-        print msg
-#        err_log.write(msg)
+        err_log.write(msg)
         output_file.write(raw_number)
+
+    except ValueError as err:
+        msg = "ValueError: {}\t{}: {}".format(err.message, str(line_number), raw_number)
+        print msg
+        err_log.write(msg)
+        output_file.write(raw_number)
+
+    line_number += 1
