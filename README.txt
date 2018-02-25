@@ -28,7 +28,7 @@ The program runs a series of error checks during execution, raising an appropria
 
 The test program employs a series of unit tests based on the native python module "unittest".
 
-3. Running the programs
+4. Running the programs
 ---------------	
 Formatting program
 Input: 	Input file path, Output file path:
