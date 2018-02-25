@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod
 import re
 
 class PhoneNumber(object):
@@ -7,6 +7,9 @@ class PhoneNumber(object):
     _formatted_number = ""
 
     def __init__(self, number):
+        if number[2:4] != self.country_code:
+            raise ValueError("Number belongs to a different class")
+
         self.parse(number)
         self.format()
 
