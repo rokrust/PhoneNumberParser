@@ -1,12 +1,11 @@
 import PhoneNumber as PN
 import sys
 
-def exception_handler(log_file, except_msg, line_number, raw_number):
+def exception_handler(err, line_number, raw_number):
     msg = "{}\t at line {}: {}".format(err.message, str(line_number), raw_number)
     print msg
     err_log.write(msg)
     output_file.write(raw_number)
-
 
 try:
     if len(sys.argv) < 3:
@@ -20,7 +19,7 @@ except TypeError as err:
 in_file = sys.argv[1]
 out_file = sys.argv[2]
 
-line_number = 0
+line_number = 1
 raw_number = ""  # Unnormalized
 
 country_number_mapping = {
@@ -47,7 +46,7 @@ while True:
         # Strip phonenumber of spaces and non-alphanumeric separation characters
         number = PN.PhoneNumber.normalize(raw_number)
 
-        #check that phonenumber is a numeral and non-empty
+        #Confirm that phonenumber is numeral and non-empty
         PN.PhoneNumber.normalized_number_error_check(number)
 
         # Find country code
@@ -60,18 +59,18 @@ while True:
         # Instantiate appropriate class according to country code
         number_instance = country_number_mapping[country](number)
 
-        # No exceptions raised. Number is correct
+        # Formatting successful. No exceptions raised
         number = number_instance.get_formatted_number()
         output_file.write(number + "\n")
 
-    # Phonenumber is wrong
+    # Formatting unsuccessful.
     except TypeError as err:
-        exception_handler(err_log, err, line_number, raw_number)
+        exception_handler(err, line_number, raw_number)
 
     except IndexError as err:
-        exception_handler(err_log, err, line_number, raw_number)
+        exception_handler(err, line_number, raw_number)
 
     except ValueError as err:
-        exception_handler(err_log, err, line_number, raw_number)
+        exception_handler(err, line_number, raw_number)
 
     line_number += 1
