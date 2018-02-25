@@ -1,5 +1,11 @@
-ValueError: Number contains letters	line 0: +abc
-ValueError: Unsupported country code	line 8: +48 123456789
-ValueError: Number contains letters	line 9: abc
-IndexError: Number is empty	line 10: 	
-ValueError: No country code given	line 11: 12345678
+IndexError: Number is too short		 at line 4: +47 12345
+IndexError: Number is too long		 at line 5: +471234567890
+IndexError: Number is too short		 at line 10: +46
+IndexError: Number is too long		 at line 11: +46 123456789012345678
+IndexError: Number is too short		 at line 13: +45 12345
+IndexError: Number is too long		 at line 14: +45 123456789
+ValueError: Number contains letters	 at line 15: +45 1234567a
+ValueError: Unsupported country code	 at line 16: +48 12345678
+ValueError: Number contains letters	 at line 17: abc	
+IndexError: Number is empty	 at line 18: 
+ValueError: No country code given	 at line 19: 12345678

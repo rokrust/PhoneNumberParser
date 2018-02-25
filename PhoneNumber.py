@@ -31,9 +31,9 @@ class PhoneNumber(object):
     @staticmethod
     def normalized_number_error_check(number):
         if not number:
-            raise IndexError("Number is empty")
+            raise IndexError("IndexError: Number is empty")
         elif not number.isdigit():
-            raise ValueError("Number contains letters")
+            raise ValueError("ValueError: Number contains letters")
 
     @staticmethod
     def identify_country(number):
@@ -42,7 +42,7 @@ class PhoneNumber(object):
         elif number[0] == "+":
             return number[1:3]
         else:
-            raise ValueError("No country code given")
+            raise ValueError("ValueError: No country code given")
 
     @abstractmethod
     def parse(self, number):
@@ -52,27 +52,28 @@ class PhoneNumber(object):
     @abstractmethod
     def format(self): pass
 
+    def __str__(self):
+        return self._formatted_number
+
     @abstractmethod
-    def number_length_check(self, number): pass
-class DanishPhoneNumber(PhoneNumber):
-    country_code = "45"
-    def __init__(self, number):
-        super(DanishPhoneNumber, self).__init__(number)
-
     def number_length_check(self, number):
-        # Value checks
-        super(PhoneNumber, self).__init__()
-
         # Length checks
         if len(number) < 12:
-            raise IndexError("Number too short")
+            raise IndexError("IndexError: Number is too short\t")
         if len(number) > 12:
-            raise IndexError("Number too long")
+            raise IndexError("IndexError: Number is too long\t")
+
+class DanishPhoneNumber(PhoneNumber):
+    country_code = "45"
+
+    def __init__(self, number):
+        super(DanishPhoneNumber, self).__init__(number)
 
     # Follows the format: "country code-number: 2-2-2-2"
     def format(self):
         number_str = "{} {} {} {}".format(self._number[:2], self._number[2:4], self._number[4:6], self._number[6:8])
         self._formatted_number = "+{} {}".format(self.country_code, number_str)
+
 class SwedishPhoneNumber(PhoneNumber):
     country_code = "46"
     _regional_code = ""
@@ -81,14 +82,11 @@ class SwedishPhoneNumber(PhoneNumber):
         super(SwedishPhoneNumber, self).__init__(number)
 
     def number_length_check(self, number):
-        # Value checks
-        super(PhoneNumber, self).__init__()
-
         # Length checks
         if len(number) < 12:
-            raise IndexError("Number too short")
+            raise IndexError("IndexError: Number is too short\t")
         if len(number) > 16:
-            raise IndexError("Number too long")
+            raise IndexError("IndexError: Number is too long\t")
 
     def parse(self, number):
         self.number_length_check(number)
@@ -107,24 +105,16 @@ class SwedishPhoneNumber(PhoneNumber):
 
         self._regional_code = "(" + self._regional_code + ")"
 
-    # Follows the format: "country code-regional code-number:"
+    # Follows the format: "country-code regional-code number:"
+    # i.e. "+46 (0123) 12345678
     def format(self):
         self._formatted_number = "+{} {} {}".format(self.country_code, self._regional_code, self._number)
+
 class NorwegianPhoneNumber(PhoneNumber):
     country_code = "47"
 
     def __init__(self, number):
         super(NorwegianPhoneNumber, self).__init__(number)
-
-    def number_length_check(self, number):
-        # Value checks
-        super(PhoneNumber, self).__init__()
-
-        # Length checks
-        if len(number) < 12:
-            raise IndexError("Number too short")
-        if len(number) > 12:
-            raise IndexError("Number too long")
 
     # Follows the format: "country code-number: 3-2-3"
     def format(self):

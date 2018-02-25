@@ -1,6 +1,13 @@
 import PhoneNumber as PN
 import sys
 
+def exception_handler(log_file, except_msg, line_number, raw_number):
+    msg = "{}\t at line {}: {}".format(err.message, str(line_number), raw_number)
+    print msg
+    err_log.write(msg)
+    output_file.write(raw_number)
+
+
 try:
     if len(sys.argv) < 3:
         raise TypeError("Not enough input arguments")
@@ -16,9 +23,12 @@ out_file = sys.argv[2]
 line_number = 0
 raw_number = ""  # Unnormalized
 
-country_number_mapping = {PN.DanishPhoneNumber.country_code: PN.DanishPhoneNumber,#getattr(PN, "DanishPhoneNumber"),
-                          PN.SwedishPhoneNumber.country_code: PN.SwedishPhoneNumber, #getattr(PN, "SwedishPhoneNumber"),
-                          PN.NorwegianPhoneNumber.country_code: PN.NorwegianPhoneNumber}#getattr(PN, "NorwegianPhoneNumber")}
+country_number_mapping = {
+    PN.DanishPhoneNumber.country_code: PN.DanishPhoneNumber,
+    PN.SwedishPhoneNumber.country_code: PN.SwedishPhoneNumber,
+    PN.NorwegianPhoneNumber.country_code: PN.NorwegianPhoneNumber
+}
+
 input_file = open(in_file, "r")
 output_file = open(out_file, "w")
 err_log = open("error_log.txt", "w")
@@ -45,7 +55,7 @@ while True:
 
         # Confirm that the number type is supported
         if country not in country_number_mapping.keys():
-            raise ValueError("Unsupported country code")
+            raise ValueError("ValueError: Unsupported country code")
 
         # Instantiate appropriate class according to country code
         number_instance = country_number_mapping[country](number)
@@ -56,21 +66,12 @@ while True:
 
     # Phonenumber is wrong
     except TypeError as err:
-        msg = "TypeError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
-        print msg
-        err_log.write(msg)
-        output_file.write(raw_number)
+        exception_handler(err_log, err, line_number, raw_number)
 
     except IndexError as err:
-        msg = "IndexError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
-        print msg
-        err_log.write(msg)
-        output_file.write(raw_number)
+        exception_handler(err_log, err, line_number, raw_number)
 
     except ValueError as err:
-        msg = "ValueError: {}\tline {}: {}".format(err.message, str(line_number), raw_number)
-        print msg
-        err_log.write(msg)
-        output_file.write(raw_number)
+        exception_handler(err_log, err, line_number, raw_number)
 
     line_number += 1
