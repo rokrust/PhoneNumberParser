@@ -9,7 +9,14 @@ class PhoneNumberTest(unittest.TestCase):
     def test_country_identifier(self):
         self.assertEqual(PN.PhoneNumber.identify_country("+47 123 45678"), "47")
 
-    def test
+    def test_number_empty_check(self):
+        with self.assertRaises(IndexError):
+            PN.PhoneNumber.normalized_number_error_check("")
+
+    def test_not_a_number_check(self):
+        with self.assertRaises(ValueError):
+            PN.PhoneNumber.normalized_number_error_check("00461234abcdf")
+
 
 class DanishPhoneNumberTest(unittest.TestCase):
     def setUp(self):
@@ -84,7 +91,6 @@ class NorwegianPhoneNumberTest(unittest.TestCase):
     def test_format(self):
         self.number.format()
         self.assertEqual(str(self.number), "+47 123 45 678")
-
 
 if __name__ == "__main__":
     unittest.main()
