@@ -36,8 +36,11 @@ Input: 	Input file path, Output file path:
 Output: List of normalized numbers, report with list of errors
 
 The formatting program can be run by a python 2.7 compiler through the main.py file.
+Example: python main.py phoneNumbers.txt normalizedPhoneNumbers.txt
+
 
 test.py
 Input:
 
 The test program can be run by a python 2.7 compiler through the test.py file. Flags are included as desired, see the unittest python documentation.
+Example: python test.py -V
